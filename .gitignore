@@ -1,0 +1,16 @@
+/.metadata/
+
+Thumbs.db
+.DS_Store
+
+.gradle
+!gradle-wrapper.jar
+
+out
+build
+bin
+
+*.log
+*.swp
+*.bak
+/.recommenders/
