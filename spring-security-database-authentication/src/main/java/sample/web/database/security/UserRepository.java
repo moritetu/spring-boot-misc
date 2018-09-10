@@ -25,8 +25,8 @@ public class UserRepository {
 	@Autowired
 	private UserDetailsManager userDetailsManager;
 
-	public List<User> findAll() {
-		return jdbcTemplate.query("SELECT * FROM users ORDER BY userid", new RowMapper<User>() {
+	public List<UserDetails> findAll() {
+		return jdbcTemplate.query("SELECT * FROM users ORDER BY userid", new RowMapper<UserDetails>() {
 			// ROLEの取得処理
 			@Override
 			public User mapRow(ResultSet rs, int rowNum) throws SQLException {

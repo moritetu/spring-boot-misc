@@ -32,7 +32,7 @@ public class UserController {
 	@RequestMapping(path = "home")
 	public String home(Model model) {
 		// ユーザ一覧取得
-		List<User> users = userRepository.findAll();
+		List<UserDetails> users = userRepository.findAll();
 		model.addAttribute(users);
 		return "user/home";
 	}
@@ -85,7 +85,7 @@ public class UserController {
 			return "user/edit";
 		}
 		
-		User user = new User(form.getUsername(),
+		UserDetails user = new User(form.getUsername(),
 				passwordEncorder.encode(form.getPassword()),
 				AuthorityUtils.createAuthorityList("ROLE_USER"));
 		userRepository.createUser(user);
