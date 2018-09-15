@@ -34,10 +34,10 @@ public class SpringSecurityDatabaseAuthenticationApplicationTest {
 
 	@Test
 	public void testRequireLogin() throws Exception {
-		unauthenticated().match(mvc.perform(get("/user/home"))
-				.andExpect(status().isFound())
-				.andExpect(redirectedUrlPattern("**/login"))
-				.andReturn());
+		mvc.perform(get("/user/home"))
+			.andExpect(status().isFound())
+			.andExpect(redirectedUrlPattern("**/login"))
+			.andExpect(unauthenticated());
 	}
 	
 	@Test
@@ -64,9 +64,9 @@ public class SpringSecurityDatabaseAuthenticationApplicationTest {
 
 	@Test
 	public void testFormLoginOnFailure() throws Exception {
-		unauthenticated().match(mvc.perform(
+		mvc.perform(
 			formLogin().user("admin").password("dummy"))
 			.andExpect(status().isFound())
-			.andReturn());
+			.andExpect(unauthenticated());
 	}
 }
