@@ -1,6 +1,10 @@
 create table makers (
   maker_id int primary key AUTO_INCREMENT,
   maker_name varchar(64) not null,
+  created_by varchar(64),
+  created_date datetime,
+  last_modified_by varchar(64),
+  last_modified_date datetime
 );
 
 create table goods (
